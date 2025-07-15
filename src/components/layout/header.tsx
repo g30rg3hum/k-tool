@@ -17,7 +17,7 @@ export default function Header() {
   // add event listener for detecting the user has sufficiently scrolled
   useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold = 100;
+      const scrollThreshold = 10;
       setIsSufficientlyScrolled(window.scrollY > scrollThreshold);
     };
 
@@ -29,8 +29,10 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        "fixed top-0 z-10 w-full transition-colors duration-150",
-        isSufficientlyScrolled ? "bg-white" : "bg-transparent",
+        "fixed top-0 z-10 w-full transition-colors duration-300",
+        isSufficientlyScrolled || isMobileMenuOpen
+          ? "bg-white"
+          : "bg-transparent",
         !isMobileMenuOpen && isSufficientlyScrolled && "shadow-xs"
       )}
     >
@@ -39,7 +41,7 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:block h-max">
-          <ul className="uppercase font-medium flex gap-6">
+          <ul className="uppercase font-semibold flex gap-6">
             {navLinks.map(({ text, href }) => (
               <NavLink key={text} href={href} text={text} />
             ))}
@@ -59,12 +61,10 @@ export default function Header() {
       {/* Mobile Menu - overlaps below the header. */}
       <div
         className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-xs transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4"
+          isMobileMenuOpen ? "opacity-100" : "opacity-0"
         }`}
       >
-        <nav className="px-8 py-6">
+        <nav className="px-8 pb-6">
           <ul className="uppercase font-medium space-y-4">
             {navLinks.map(({ text, href }) => (
               <NavLink
@@ -89,7 +89,7 @@ interface NavLinkProps {
 
 function NavLink({ href, text, onClick }: NavLinkProps) {
   return (
-    <li>
+    <li className="hover:scale-[1.02] transition-all w-max">
       <Link href={href} onClick={onClick}>
         {text}
       </Link>
