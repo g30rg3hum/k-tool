@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        "fixed top-0 z-10 w-full transition-colors duration-150 border border-red-500",
+        "fixed top-0 z-10 w-full transition-colors duration-150",
         isSufficientlyScrolled ? "bg-white" : "bg-transparent",
         !isMobileMenuOpen && isSufficientlyScrolled && "shadow-xs"
       )}
