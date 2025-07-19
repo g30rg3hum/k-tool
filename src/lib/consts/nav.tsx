@@ -5,7 +5,7 @@ const navLinks = [
   },
   {
     href: "/about",
-    text: "About Us",
+    text: "About",
   },
   {
     href: "/products",

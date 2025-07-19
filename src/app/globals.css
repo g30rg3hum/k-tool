@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #0090ff;
-  --primary-light: #2ca4ff;
+  --primary: #0047c2;
+  --primary-light: #1a5bca;
 }
 
 @theme {
-  --font-sans: var(--font-dm-sans);
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
 }
