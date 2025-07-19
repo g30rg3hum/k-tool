@@ -1,4 +1,4 @@
-import { layoutPadding } from "@/lib/consts/padding";
+import { layoutPadding } from "@/lib/consts/layout/padding";
 import clsx from "clsx";
 
 interface Props {

@@ -1,7 +1,7 @@
 "use client";
 
-import navLinks from "@/lib/consts/nav";
-import { layoutPadding } from "@/lib/consts/padding";
+import navLinks from "@/lib/consts/layout/nav";
+import { layoutPadding } from "@/lib/consts/layout/padding";
 import { Bars3Icon } from "@heroicons/react/16/solid";
 import clsx from "clsx";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import PrimaryButton from "../standard/primary-button";
 import { getResponsiveClass } from "@/lib/funcs/utils";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,7 +42,15 @@ export default function Header() {
       )}
     >
       {/* Main part of the header */}
-      <div className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-lg transition-colors duration-300 bg-white shadow-sm pointer-events-auto">
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.8,
+          type: "spring",
+        }}
+        className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-lg transition-colors duration-300 bg-white shadow-sm pointer-events-auto"
+      >
         <Image
           src="/images/logo.png"
           alt="K-Tool Logo"
@@ -78,7 +87,7 @@ export default function Header() {
         >
           <Bars3Icon className="size-6" />
         </button>
-      </div>
+      </motion.div>
 
       {/* Hamburger menu below the header */}
       {/* Container to create required padding + width */}

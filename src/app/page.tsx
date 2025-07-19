@@ -1,8 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import ContentContainer from "@/components/layout/content-container";
 import PrimaryButton from "@/components/standard/primary-button";
+import precedingAnimationDelay from "@/lib/consts/motion/preceding-animation-delay";
 import { ClockIcon, HomeIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import * as motion from "motion/react-client";
+import Image from "next/image";
 
 const heroPointIconClassName =
   "size-6 flex-shrink-0 transition-transform duration-300";
@@ -34,36 +36,72 @@ export default function Home() {
     <div>
       {/* Hero section */}
       <ContentContainer className="pt-31 flex flex-col items-left gap-6 lg:flex-row lg:items-center">
-        <div className="lg:w=[60%]">
-          <h2 className="font-bold text-3xl mb-1 md:text-4xl">
-            Setting the standard in{" "}
-            <span className="text-primary">precision engineering</span>
-          </h2>
-          <p className="mb-4 text-lg">
-            We are a team of experts in advanced tooling and mold-making,
-            crafting high-quality and intricate solutions for tomorrow&apos;s
-            technology.
-          </p>
-          <PrimaryButton className="mb-4">
-            Learn more about what we do
-          </PrimaryButton>
+        <div className="lg:w-[60%]">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: precedingAnimationDelay,
+              type: "spring",
+            }}
+          >
+            <h2 className="font-bold text-3xl mb-1 md:text-4xl">
+              Setting the standard in{" "}
+              <span className="text-primary">precision engineering</span>
+            </h2>
+            <p className="mb-4 text-lg">
+              We are a team of experts in advanced tooling and mold-making,
+              crafting high-quality and intricate solutions for tomorrow&apos;s
+              technology.
+            </p>
+            <PrimaryButton className="mb-4">
+              Learn more about what we do
+            </PrimaryButton>
+          </motion.div>
+
           <div className="flex flex-col lg:flex-row gap-3 font-medium">
             {heroPoints.map(({ icon, text }, index) => (
-              <div key={index} className="flex items-center w-full gap-2">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: precedingAnimationDelay + 0.25 + index * 0.4,
+                }}
+                key={index}
+                className="flex items-center w-full gap-2"
+              >
                 {icon}
                 <p>{text}</p>
                 {index < heroPoints.length - 1 && (
                   <div className="hidden lg:block w-px h-6 bg-gray-700 ml-3" />
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-        <img
-          src="/images/hero-image.png"
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.8,
+            delay:
+              precedingAnimationDelay +
+              0.25 +
+              (heroPoints.length - 1) * 0.4 +
+              0.25,
+            type: "spring",
+          }}
           className="w-full max-w-lg lg:max-w-sm self-center lg:w-[40%]"
-          alt="Hero image"
-        />
+        >
+          <Image
+            src="/images/hero-image.png"
+            alt="Hero image"
+            width="1000"
+            height="1000"
+          />
+        </motion.div>
       </ContentContainer>
 
       {/*  */}
