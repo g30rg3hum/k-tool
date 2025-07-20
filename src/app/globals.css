@@ -3,9 +3,13 @@
 :root {
   --primary: #0047c2;
   --primary-light: #1a5bca;
+  --background-light: #fbfbfb;
+  --background-dark: #1d1d1d;
 }
 
 @theme {
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
 }

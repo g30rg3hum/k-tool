@@ -1,3 +1,4 @@
+import contentWidth from "@/lib/consts/layout/content-width";
 import { layoutPadding } from "@/lib/consts/layout/padding";
 import clsx from "clsx";
 
@@ -8,10 +9,7 @@ interface Props {
 export default function ContentContainer({ children, className }: Props) {
   return (
     <div
-      className={clsx(
-        `w-full max-w-[975px] mx-auto ${layoutPadding}`,
-        className
-      )}
+      className={clsx(`w-full mx-auto`, contentWidth, layoutPadding, className)}
     >
       {children}
     </div>

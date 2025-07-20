@@ -7,9 +7,9 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
 import PrimaryButton from "../standard/primary-button";
-import { getResponsiveClass } from "@/lib/funcs/utils";
 import Image from "next/image";
 import { motion } from "motion/react";
+import contentWidth from "@/lib/consts/layout/content-width";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,13 +31,14 @@ export default function Header() {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
 
-  const sizeChangeMenu = "lg";
-
+  // NOTE: lg is the breakpoint.
   return (
     // need to re-specify max-width because fixed.
     <header
       className={clsx(
-        `fixed top-5 left-0 right-0 mx-auto z-10 w-full max-w-[975px] ${layoutPadding}`,
+        `fixed top-5 left-0 right-0 mx-auto z-10 w-full`,
+        contentWidth,
+        layoutPadding,
         isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
       )}
     >
@@ -49,23 +50,20 @@ export default function Header() {
           duration: 0.8,
           type: "spring",
         }}
-        className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-lg transition-colors duration-300 bg-white shadow-sm pointer-events-auto"
+        className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-md transition-colors duration-300 bg-white shadow-sm pointer-events-auto"
       >
-        <Image
-          src="/images/logo.png"
-          alt="K-Tool Logo"
-          width={120}
-          height={50}
-          className="cursor-pointer hover:scale-[1.03] transition-transform"
-        />
+        <Link href="/">
+          <Image
+            src="/images/logo.png"
+            alt="K-Tool Logo"
+            width={120}
+            height={50}
+            className="cursor-pointer hover:scale-[1.03] transition-transform"
+          />
+        </Link>
 
         {/* Desktop full navigation */}
-        <nav
-          className={clsx(
-            `hidden`,
-            getResponsiveClass(sizeChangeMenu, "block")
-          )}
-        >
+        <nav className={`hidden lg:block`}>
           <ul className="flex gap-6 font-semibold items-center">
             {navLinks.map(({ text, href }) => {
               if (text !== "Contact") {
@@ -79,10 +77,7 @@ export default function Header() {
 
         {/* Smaller screen: hamburger trigger */}
         <button
-          className={clsx(
-            `hover:cursor-pointer hover:scale-[1.05] transition-all`,
-            getResponsiveClass(sizeChangeMenu, "hidden")
-          )}
+          className="hover:cursor-pointer hover:scale-[1.05] transition-all lg:hidden"
           onClick={toggleMobileMenu}
         >
           <Bars3Icon className="size-6" />
@@ -93,8 +88,9 @@ export default function Header() {
       {/* Container to create required padding + width */}
       <div
         className={clsx(
-          `absolute left-0 top-full mt-5 w-full max-w-[975px] ${layoutPadding}`,
-          getResponsiveClass(sizeChangeMenu, "hidden")
+          `absolute left-0 top-full mt-5 w-full lg:hidden`,
+          contentWidth,
+          layoutPadding
         )}
       >
         <div
