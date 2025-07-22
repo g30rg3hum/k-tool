@@ -3,10 +3,14 @@ import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
 import precedingAnimationDelay from "@/lib/consts/motion/preceding-animation-delay";
 import {
+  BoltIcon,
   ClockIcon,
   CogIcon,
+  CubeIcon,
   HomeIcon,
   PuzzlePieceIcon,
+  ScissorsIcon,
+  ShieldCheckIcon,
   SparklesIcon,
   TrophyIcon,
 } from "@heroicons/react/24/outline";
@@ -46,20 +50,44 @@ const capabilities = [
   {
     title: "Profile grinding",
     description:
-      "Delivers micron-level accuracy and exceptional surface finishes for complex parts like punches and dies, ideal for critical applications where CNC machining or wire cutting fall short.",
+      "Micron-level accuracy and fine surface finishes for complex parts like punches and dies—ideal when CNC or wire cutting can't deliver.",
     icon: <SparklesIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "CNC machining",
     description:
-      "Provides high-accuracy milling with tight tolerances and fast turnaround for complex parts in various materials, supporting both prototypes and production runs.",
+      "High-accuracy milling for complex parts in various materials, ensuring tight tolerances and fast turnaround for both prototypes and production.",
     icon: <CogIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "Design & Reverse Engineering",
     description:
-      "We design high-precision die sets and advanced tooling solutions, especially for the electronics industry. Our reverse engineering expertise enables accurate replication or modification of existing parts to meet evolving needs.",
+      "We create high-precision die sets and replicate or modify existing parts, with expertise in advanced tooling for the electronics industry.",
     icon: <PuzzlePieceIcon className={capabilitiesIconClassName} />,
+  },
+  {
+    title: "CAD/CAM Software",
+    description:
+      "Advanced CAD/CAM solutions turn your ideas into precise tooling, improving accuracy, shortening lead times, and ensuring seamless production.",
+    icon: <CubeIcon className={capabilitiesIconClassName} />,
+  },
+  {
+    title: "Sinker EDM",
+    description:
+      "High-precision spark erosion for detailed cavities and hardened materials—perfect for advanced tooling and mold applications.",
+    icon: <BoltIcon className={capabilitiesIconClassName} />,
+  },
+  {
+    title: "Wire Cutting",
+    description:
+      "Precision wire cutting for fine-finish cuts, tight tolerances, and small internal radii—ideal for detailed profiles and high-accuracy parts.",
+    icon: <ScissorsIcon className={capabilitiesIconClassName} />,
+  },
+  {
+    title: "Steel and Carbide Grinding",
+    description:
+      "Expert grinding of steel and carbide to tight tolerances, ensuring dimensional accuracy and durability for demanding tooling needs.",
+    icon: <ShieldCheckIcon className={capabilitiesIconClassName} />,
   },
 ];
 
@@ -102,6 +130,7 @@ export default function Home() {
                 transition={{
                   duration: 0.8,
                   delay: precedingAnimationDelay + 0.25 + index * 0.4,
+                  type: "spring",
                 }}
                 key={index}
                 className="flex items-center w-full gap-2"
@@ -165,25 +194,30 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="flex flex-col gap-4 lg:flex-row">
-            {capabilities.map(({ title, description, icon }, index) => (
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: precedingAnimationDelay + 0.25 + index * 0.4,
-                }}
-                key={title}
-                className="border p-4 rounded-md lg:w-1/3"
-              >
-                <h4 className="font-semibold mb-1 flex gap-2 items-center">
-                  {icon} {title}
-                </h4>
-                <p className="text-sm">{description}</p>
-              </motion.div>
-            ))}
+          <div className="overflow-y-auto lg:overflow-x-auto scroll-smooth">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay + 0.25,
+                type: "spring",
+              }}
+              className="flex gap-4 flex-col h-[390px] lg:pb-4 lg:flex-row lg:w-max lg:h-auto"
+            >
+              {capabilities.map(({ title, description, icon }) => (
+                <div
+                  key={title}
+                  className="p-4 rounded-md bg-[#121212] transition duration-300 hover:bg-primary cursor-default w-full lg:w-[294px]"
+                >
+                  <h4 className="font-semibold mb-1 flex gap-2 items-center">
+                    {icon} {title}
+                  </h4>
+                  <p className="text-sm">{description}</p>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </ContentContainer>
       </div>
