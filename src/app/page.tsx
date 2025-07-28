@@ -1,4 +1,6 @@
 import ContentContainer from "@/components/layout/content-container";
+import Accordion, { AccordionItem } from "@/components/standard/accordion";
+import Hyperlink from "@/components/standard/hyperlink";
 import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
 import precedingAnimationDelay from "@/lib/consts/motion/preceding-animation-delay";
@@ -49,45 +51,92 @@ const capabilitiesIconClassName = "size-6";
 const capabilities = [
   {
     title: "Profile grinding",
-    description:
-      "Micron-level accuracy and fine surface finishes for complex parts like punches and dies—ideal when CNC or wire cutting can't deliver.",
+    description: (
+      <>
+        Micron-level accuracy and fine surface finishes for complex parts like
+        punches and dies—ideal when CNC or wire cutting can&apos;t deliver.
+      </>
+    ),
     icon: <SparklesIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "CNC machining",
-    description:
-      "High-accuracy milling for complex parts in various materials, ensuring tight tolerances and fast turnaround for both prototypes and production.",
+    description: (
+      <>
+        High-accuracy milling for complex parts in{" "}
+        <Hyperlink>various materials</Hyperlink>, ensuring tight tolerances and
+        fast turnaround for both prototypes and production.
+      </>
+    ),
     icon: <CogIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "Design & Reverse Engineering",
-    description:
-      "We create high-precision die sets and replicate or modify existing parts, with expertise in advanced tooling for the electronics industry.",
+    description: (
+      <>
+        We create high-precision die sets, and replicate or modify existing
+        tools or parts, guided by specialised expertise in advanced tooling for
+        the electronics industry.
+      </>
+    ),
     icon: <PuzzlePieceIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "CAD/CAM Software",
-    description:
-      "Advanced CAD/CAM solutions turn your ideas into precise tooling, improving accuracy, shortening lead times, and ensuring seamless production.",
+    description: (
+      <>
+        Advanced CAD/CAM solutions turn your ideas into precise tooling,
+        improving accuracy, shortening lead times, and ensuring seamless
+        production.
+      </>
+    ),
     icon: <CubeIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "Sinker EDM",
-    description:
-      "High-precision spark erosion for detailed cavities and hardened materials—perfect for advanced tooling and mold applications.",
+    description: (
+      <>
+        High-precision spark erosion for detailed cavities, fine details, and
+        hardened materials—perfect for advanced tooling and mold applications.
+      </>
+    ),
     icon: <BoltIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "Wire Cutting",
-    description:
-      "Precision wire cutting for fine-finish cuts, tight tolerances, and small internal radii—ideal for detailed profiles and high-accuracy parts.",
+    description: (
+      <>
+        Precision wire cutting for fine-finish cuts, tight tolerances, and small
+        internal radii—ideal for detailed profiles and high-accuracy parts.
+      </>
+    ),
     icon: <ScissorsIcon className={capabilitiesIconClassName} />,
   },
   {
     title: "Steel and Carbide Grinding",
-    description:
-      "Expert grinding of steel and carbide to tight tolerances, ensuring dimensional accuracy and durability for demanding tooling needs.",
+    description: (
+      <>
+        Expert grinding of steel and carbide to tight tolerances, ensuring
+        high-dimensional accuracy and durability for demanding tooling needs.
+      </>
+    ),
     icon: <ShieldCheckIcon className={capabilitiesIconClassName} />,
+  },
+];
+
+// Product highlights section
+const productHighlights: AccordionItem[] = [
+  {
+    title: "Product highlight 1",
+    content: "Product highlight 1 description",
+  },
+  {
+    title: "Product highlight 2",
+    content: "Product highlight 2 description",
+  },
+  {
+    title: "Product highlight 3",
+    content: "Product highlight 3 description",
   },
 ];
 
@@ -194,20 +243,35 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="overflow-y-auto lg:overflow-x-auto scroll-smooth">
+          <div className="overflow-y-auto lg:overflow-x-auto scroll-smooth capabilities-scroll">
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: precedingAnimationDelay + 0.25,
-                type: "spring",
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    duration: 0.1,
+                    delay: precedingAnimationDelay + 0.25,
+                    type: "spring",
+                    delayChildren: 0.5,
+                    staggerChildren: 0.4,
+                  },
+                },
               }}
-              className="flex gap-4 flex-col h-[390px] lg:pb-4 lg:flex-row lg:w-max lg:h-auto"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex gap-4 flex-col h-[390px] pr-4 lg:pr-0 lg:pb-4 lg:flex-row lg:w-max lg:h-auto"
             >
               {capabilities.map(({ title, description, icon }) => (
-                <div
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: { duration: 0.8, type: "spring" },
+                    },
+                  }}
                   key={title}
                   className="p-4 rounded-md bg-[#121212] transition duration-300 hover:bg-primary cursor-default w-full lg:w-[294px]"
                 >
@@ -215,63 +279,38 @@ export default function Home() {
                     {icon} {title}
                   </h4>
                   <p className="text-sm">{description}</p>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
         </ContentContainer>
       </div>
+
+      {/* Product highlights section */}
+      <div className="py-10">
+        <ContentContainer className="flex flex-col lg:flex-row gap-6 items-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.8,
+              delay: precedingAnimationDelay,
+              type: "spring",
+            }}
+            className="lg:w-[55%]"
+          >
+            <SectionHeading spaceBelow>Product highlights</SectionHeading>
+            <p className="mb-4">
+              Our precision engineering capabilities power real-world solutions
+              across a wide range of applications - helping you stay ahead in a
+              rapidly evolving technological world.
+            </p>
+            <PrimaryButton>More of our work</PrimaryButton>
+          </motion.div>
+          <Accordion className="lg:w-[45%]" items={productHighlights} />
+        </ContentContainer>
+      </div>
     </div>
   );
 }
-
-{
-  /* <Container className="rounded-b-[5rem] bg-linear-to-t from-[#CBF3FF] to-[#E5F9FF] pt-[5.5rem] pb-[4rem]">
-        <div className="mt-8 flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-6">
-          <div>
-            <h2 className="text-5xl font-bold mb-4">
-              Setting the standard in{" "}
-              <span className="text-primary lg:block">
-                precision engineering
-              </span>
-            </h2>
-            <p className="mb-6 text-lg">
-              We are experts in advanced tooling, crafting high-accuracy
-              solutions for tomorrow’s technology.
-            </p>
-            <PrimaryButton text="Learn more about us" />
-          </div>
-
-          <Image
-            src="/images/hero-image.png"
-            className="w-[600px] lg:w-[500px]"
-            height="500"
-            width="500"
-            alt="Hero collage image"
-          />
-        </div>
-      </Container> */
-}
-
-{
-  /* "Our capabilities" section */
-}
-// <Container className="py-16">
-//   <div className="mb-8 flex justify-between">
-//     <h3 className="text-4xl font-semibold">Our capabilities</h3>
-//     <PrimaryButton text="View all capabilities" />
-//   </div>
-
-//   <p className="mb-4">
-//     A one-stop tooling solution that specialises in turning complex
-//     engineering challenges into perfectly executed parts and tools. With
-//     full in-house capabilities, K-Tool delivers accuracy, repeatability,
-//     and reliability at every stage of production. Whether it’s a one-off
-//     prototype or intricate molds, we engineer with purpose - and
-//     precision.
-//   </p>
-
-//   <div>
-//     <div></div>
-//   </div>
-// </Container>

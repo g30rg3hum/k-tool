@@ -5,6 +5,7 @@
   --primary-light: #1a5bca;
   --background-light: #fbfbfb;
   --background-dark: #1d1d1d;
+  --background-dark-secondary: #2f2f2f;
 }
 
 @theme {
@@ -12,4 +13,28 @@
   --color-primary-light: var(--primary-light);
   --color-background-light: var(--background-light);
   --color-background-dark: var(--background-dark);
+  --color-background-dark-secondary: var(--background-dark-secondary);
+}
+
+.capabilities-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.capabilities-scroll::-webkit-scrollbar-track {
+  background: var(--background-dark-secondary);
+  border-radius: 4px;
+}
+
+.capabilities-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.capabilities-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+.capabilities-scroll::-webkit-scrollbar-corner {
+  background: var(--background-dark-secondary);
 }
