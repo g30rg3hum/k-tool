@@ -170,7 +170,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero section */}
-      <ContentContainer className="pt-29 lg:pt-30 flex flex-col items-left gap-6 lg:flex-row lg:items-center mb-10">
+      <ContentContainer className="pt-29 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center mb-10 lg:mb-16">
         <div className="lg:w-[60%]">
           <motion.div
             initial={{ opacity: 0, x: -15 }}
