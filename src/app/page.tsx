@@ -5,11 +5,14 @@ import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
 import precedingAnimationDelay from "@/lib/consts/motion/preceding-animation-delay";
 import {
+  ArrowPathIcon,
   BoltIcon,
   ClockIcon,
   CogIcon,
   CubeIcon,
   HomeIcon,
+  HomeModernIcon,
+  MagnifyingGlassCircleIcon,
   PuzzlePieceIcon,
   ScissorsIcon,
   ShieldCheckIcon,
@@ -71,7 +74,7 @@ const capabilities = [
     icon: <CogIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Design & Reverse Engineering",
+    title: "Design & reverse engineering",
     description: (
       <>
         We create high-precision die sets, and replicate or modify existing
@@ -103,7 +106,7 @@ const capabilities = [
     icon: <BoltIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Wire Cutting",
+    title: "Wire cutting",
     description: (
       <>
         Precision wire cutting for fine-finish cuts, tight tolerances, and small
@@ -113,7 +116,7 @@ const capabilities = [
     icon: <ScissorsIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Steel and Carbide Grinding",
+    title: "Steel and carbide grinding",
     description: (
       <>
         Expert grinding of steel and carbide to tight tolerances, ensuring
@@ -137,6 +140,29 @@ const productHighlights: AccordionItem[] = [
   {
     title: "Product highlight 3",
     content: "Product highlight 3 description",
+  },
+];
+
+// Choose us section
+const chooseUsIconClassName = "size-6";
+const chooseUsReasons = [
+  {
+    title: "In-house expertise",
+    description:
+      "From design to machining - all services are handled under one roof for full control and accountability.",
+    icon: <HomeModernIcon className={chooseUsIconClassName} />,
+  },
+  {
+    title: "Micron-level precision",
+    description:
+      "Our work meets the highest standards of accuracy and quality, backed by decades of experience.",
+    icon: <MagnifyingGlassCircleIcon className={chooseUsIconClassName} />,
+  },
+  {
+    title: "End-to-end solutions",
+    description:
+      "We support every stage of production, from prototyping to tooling, molding, and final component delivery.",
+    icon: <ArrowPathIcon className={chooseUsIconClassName} />,
   },
 ];
 
@@ -218,7 +244,7 @@ export default function Home() {
       </ContentContainer>
 
       {/* Capabilities section */}
-      <div className="bg-background-dark text-white py-10">
+      <div className="bg-background-dark text-white py-10 lg:py-16">
         <ContentContainer>
           <motion.div
             initial={{ opacity: 0 }}
@@ -287,7 +313,7 @@ export default function Home() {
       </div>
 
       {/* Product highlights section */}
-      <div className="py-10">
+      <div className="py-10 lg:py-16">
         <ContentContainer className="flex flex-col lg:flex-row gap-6 items-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -308,8 +334,72 @@ export default function Home() {
             </p>
             <PrimaryButton>More of our work</PrimaryButton>
           </motion.div>
-          <Accordion className="lg:w-[45%]" items={productHighlights} />
+          <Accordion
+            className="lg:w-[45%]"
+            items={productHighlights}
+            delay={precedingAnimationDelay + 0.25}
+          />
         </ContentContainer>
+      </div>
+
+      {/* Why choose us section */}
+      <div className="text-white">
+        <Image
+          src="/images/triangle-transition.png"
+          alt="Triangle transition background"
+          className="w-full h-5 md:h-7 lg:h-9"
+          height={1000}
+          width={1000}
+        />
+        <div className="bg-primary w-full py-10 lg:py-16">
+          <ContentContainer>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay,
+                type: "spring",
+              }}
+              className="text-center flex flex-col items-center mb-8"
+            >
+              <SectionHeading spaceBelow>Why choose us?</SectionHeading>
+              <p className="max-w-2xl">
+                Trusted by leading manufacturers, we combine craftsmanship,
+                technology, and commitment to deliver unmatched precision -
+                every time.
+              </p>
+            </motion.div>
+            <div className="flex flex-col lg:flex-row gap-6">
+              {chooseUsReasons.map(({ title, description, icon }, index) => (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    delay: precedingAnimationDelay + 0.25 + index * 0.4,
+                    type: "spring",
+                  }}
+                  key={title}
+                  className="text-center flex"
+                >
+                  <div className="cursor-default hover:scale-[1.02] transition-transform">
+                    <h4 className="font-semibold mb-1 flex gap-2 items-center justify-center">
+                      {icon} {title}
+                    </h4>
+                    <p className="text-sm">{description}</p>
+                  </div>
+
+                  {index < chooseUsReasons.length - 1 && (
+                    <div className="hidden lg:block w-px h-full bg-white ml-6"></div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </ContentContainer>
+        </div>
       </div>
     </div>
   );

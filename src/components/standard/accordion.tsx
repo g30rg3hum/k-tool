@@ -11,9 +11,10 @@ export interface AccordionItem {
 
 interface Props {
   items: AccordionItem[];
+  delay: number;
   className?: string;
 }
-export default function Accordion({ items, className }: Props) {
+export default function Accordion({ items, delay, className }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -27,7 +28,14 @@ export default function Accordion({ items, className }: Props) {
         const isOpen = openIndex === index;
 
         return (
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              delay: delay + index * 0.4,
+            }}
             key={index}
             className="p-4 rounded-md bg-white hover:scale-[1.02] transition-transform cursor-pointer"
             onClick={() => toggleAccordion(index)}
@@ -53,7 +61,7 @@ export default function Accordion({ items, className }: Props) {
             >
               <div className="text-sm">{item.content}</div>
             </motion.div>
-          </div>
+          </motion.div>
         );
       })}
     </div>
