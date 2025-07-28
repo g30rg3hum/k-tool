@@ -383,7 +383,7 @@ export default function Home() {
                     type: "spring",
                   }}
                   key={title}
-                  className="text-center flex"
+                  className="text-center flex justify-center"
                 >
                   <div className="cursor-default hover:scale-[1.02] transition-transform">
                     <h4 className="font-semibold mb-1 flex gap-2 items-center justify-center">
