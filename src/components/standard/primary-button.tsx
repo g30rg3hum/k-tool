@@ -19,8 +19,9 @@ export default function PrimaryButton({
       className={clsx(
         className,
         color === "white" &&
-          "bg-white text-black hover:bg-background-light hover:bg-[#ededed]",
-        color === "blue" && "bg-primary text-white hover:bg-primary-light",
+          "bg-white text-black hover:bg-background-light hover:bg-[#ededed] border-gray-200 border",
+        color === "blue" &&
+          "bg-primary text-white hover:bg-primary-light border border-primary-dark",
         "px-6 py-2 rounded-md transition-all hover:cursor-pointer hover:scale-[1.04] h-max font-semibold shadow-sm"
       )}
       onClick={onClick}

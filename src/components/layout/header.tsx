@@ -50,7 +50,7 @@ export default function Header() {
           duration: 0.8,
           type: "spring",
         }}
-        className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-md transition-colors duration-300 bg-white shadow-sm pointer-events-auto"
+        className="flex justify-between items-center px-4 lg:px-6 py-4 rounded-md transition-colors duration-300 bg-white shadow-sm pointer-events-auto border border-gray-200"
       >
         <Link href="/">
           <Image
@@ -95,7 +95,7 @@ export default function Header() {
       >
         <div
           className={clsx(
-            `bg-white shadow-sm transition-all duration-300 ease-in-out p-6 rounded-lg`,
+            `bg-white border border-gray-200 shadow-sm transition-all duration-300 ease-in-out p-6 rounded-lg`,
             isMobileMenuOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-2"

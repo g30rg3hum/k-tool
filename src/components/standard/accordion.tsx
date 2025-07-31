@@ -40,7 +40,7 @@ export default function Accordion({ items, delay, className }: Props) {
             viewport={{ once: true }}
             key={index}
             className={clsx(
-              "p-4 rounded-md bg-white hover:scale-[1.02] transition-transform shadow-sm",
+              "p-4 rounded-md bg-white hover:scale-[1.02] transition-transform shadow-sm border border-gray-200",
               contentExists ? "cursor-pointer" : "cursor-default"
             )}
             onClick={() => contentExists && toggleAccordion(index)}

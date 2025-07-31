@@ -3,6 +3,7 @@
 :root {
   --primary: #0047c2;
   --primary-light: #1a5bca;
+  --primary-dark: rgb(19, 67, 151);
   --background-light: #fbfbfb;
   --background-dark: #1d1d1d;
   --background-dark-secondary: #2f2f2f;
@@ -11,6 +12,7 @@
 @theme {
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
   --color-background-light: var(--background-light);
   --color-background-dark: var(--background-dark);
   --color-background-dark-secondary: var(--background-dark-secondary);

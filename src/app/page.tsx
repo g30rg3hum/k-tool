@@ -1,5 +1,6 @@
 import ContentContainer from "@/components/layout/content-container";
 import Accordion, { AccordionItem } from "@/components/standard/accordion";
+import Card from "@/components/standard/card";
 import Hyperlink from "@/components/standard/hyperlink";
 import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
@@ -307,7 +308,7 @@ export default function Home() {
                     },
                   }}
                   key={title}
-                  className="p-4 rounded-md bg-[#121212] transition duration-300 hover:bg-primary cursor-default w-full lg:w-[294px] shadow-sm"
+                  className="p-4 rounded-md bg-[#121212] border border-[#080808] transition duration-300 hover:bg-primary hover:border-primary-dark cursor-default w-full lg:w-[294px] shadow-sm"
                 >
                   <h4 className="font-semibold mb-1 flex gap-2 items-center">
                     {icon} {title}
@@ -379,7 +380,7 @@ export default function Home() {
                 every time.
               </p>
             </motion.div>
-            <div className="flex flex-col lg:flex-row gap-6 mb-8">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 mb-8">
               {chooseUsReasons.map(({ title, description, icon }, index) => (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -431,7 +432,19 @@ export default function Home() {
       </div>
 
       {/* Get in touch section */}
-      <div></div>
+      <div className="py-10">
+        <ContentContainer>
+          <Card className="p-8">
+            <div>
+              <SectionHeading spaceBelow>Get in touch</SectionHeading>
+              <p>
+                Ready to take your project and tools to the next level? Let us
+                know how we can help.
+              </p>
+            </div>
+          </Card>
+        </ContentContainer>
+      </div>
     </div>
   );
 }
