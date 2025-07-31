@@ -53,7 +53,7 @@ const heroPoints = [
 const capabilitiesIconClassName = "size-6";
 const capabilities = [
   {
-    title: "Profile grinding",
+    title: "Profile Grinding",
     description: (
       <>
         Micron-level accuracy and fine surface finishes for complex parts like
@@ -63,7 +63,7 @@ const capabilities = [
     icon: <SparklesIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "CNC machining",
+    title: "CNC Machining",
     description: (
       <>
         High-accuracy milling for complex parts in{" "}
@@ -74,7 +74,7 @@ const capabilities = [
     icon: <CogIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Design & reverse engineering",
+    title: "Design & Reverse Engineering",
     description: (
       <>
         We create high-precision die sets, and replicate or modify existing
@@ -106,7 +106,7 @@ const capabilities = [
     icon: <BoltIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Wire cutting",
+    title: "Wire Cutting",
     description: (
       <>
         Precision wire cutting for fine-finish cuts, tight tolerances, and small
@@ -116,7 +116,7 @@ const capabilities = [
     icon: <ScissorsIcon className={capabilitiesIconClassName} />,
   },
   {
-    title: "Steel and carbide grinding",
+    title: "Steel and Carbide Grinding",
     description: (
       <>
         Expert grinding of steel and carbide to tight tolerances, ensuring
@@ -130,16 +130,22 @@ const capabilities = [
 // Product highlights section
 const productHighlights: AccordionItem[] = [
   {
-    title: "Product highlight 1",
-    content: "Product highlight 1 description",
+    title: "Precision Tooling for Stamping Applications",
+    content:
+      "We manufacture high-precision progressive die sets and punches, tailored to meet each customer's specific stamping requirements.",
   },
   {
-    title: "Product highlight 2",
-    content: "Product highlight 2 description",
+    title: "High-Performance Components for Semiconductor Manufacturing",
+    content:
+      "We manufacture T&F die sets, punches and die inserts designed ot meet the high standards and reliability required in semiconductor manufacturing.",
   },
   {
-    title: "Product highlight 3",
-    content: "Product highlight 3 description",
+    title: "High-Precision Mold Inserts for Connector and Housing Production",
+    content: null,
+  },
+  {
+    title: "Custom-Designed Jigs & Fixtures Built to Your Specifications",
+    content: null,
   },
 ];
 
@@ -170,78 +176,80 @@ export default function Home() {
   return (
     <div>
       {/* Hero section */}
-      <ContentContainer className="pt-29 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center mb-10 lg:mb-16">
-        <div className="lg:w-[60%]">
+      <div className="relative">
+        <ContentContainer className="pt-29 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center pb-10 lg:pb-16">
+          <div className="lg:w-[60%]">
+            <motion.div
+              initial={{ opacity: 0, x: -15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay,
+                type: "spring",
+              }}
+            >
+              <h2 className="font-bold text-3xl mb-1 md:text-4xl">
+                Setting the standard in{" "}
+                <span className="text-primary">precision engineering</span>
+              </h2>
+              <p className="mb-4 text-lg">
+                We are a team of experts in advanced tooling and mold-making,
+                crafting high-quality and intricate solutions for
+                tomorrow&apos;s technology.
+              </p>
+              <PrimaryButton className="mb-4">
+                Learn more about what we do
+              </PrimaryButton>
+            </motion.div>
+
+            <div className="flex flex-col lg:flex-row gap-3 font-medium">
+              {heroPoints.map(({ icon, text }, index) => (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    delay: precedingAnimationDelay + 0.25 + index * 0.4,
+                    type: "spring",
+                  }}
+                  key={index}
+                  className="flex items-center w-full gap-2"
+                >
+                  {icon}
+                  <p>{text}</p>
+                  {index < heroPoints.length - 1 && (
+                    <div className="hidden lg:block w-px h-6 bg-gray-700 ml-3" />
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
           <motion.div
-            initial={{ opacity: 0, x: -15 }}
+            initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{
               duration: 0.8,
-              delay: precedingAnimationDelay,
+              delay:
+                precedingAnimationDelay +
+                0.25 +
+                (heroPoints.length - 1) * 0.4 +
+                0.25,
               type: "spring",
             }}
+            className="w-full max-w-lg lg:max-w-sm self-center lg:w-[40%]"
           >
-            <h2 className="font-bold text-3xl mb-1 md:text-4xl">
-              Setting the standard in{" "}
-              <span className="text-primary">precision engineering</span>
-            </h2>
-            <p className="mb-4 text-lg">
-              We are a team of experts in advanced tooling and mold-making,
-              crafting high-quality and intricate solutions for tomorrow&apos;s
-              technology.
-            </p>
-            <PrimaryButton className="mb-4">
-              Learn more about what we do
-            </PrimaryButton>
+            <Image
+              src="/images/hero-image.png"
+              alt="Hero image"
+              width="1000"
+              height="1000"
+            />
           </motion.div>
-
-          <div className="flex flex-col lg:flex-row gap-3 font-medium">
-            {heroPoints.map(({ icon, text }, index) => (
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: precedingAnimationDelay + 0.25 + index * 0.4,
-                  type: "spring",
-                }}
-                key={index}
-                className="flex items-center w-full gap-2"
-              >
-                {icon}
-                <p>{text}</p>
-                {index < heroPoints.length - 1 && (
-                  <div className="hidden lg:block w-px h-6 bg-gray-700 ml-3" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0, x: 15 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            delay:
-              precedingAnimationDelay +
-              0.25 +
-              (heroPoints.length - 1) * 0.4 +
-              0.25,
-            type: "spring",
-          }}
-          className="w-full max-w-lg lg:max-w-sm self-center lg:w-[40%]"
-        >
-          <Image
-            src="/images/hero-image.png"
-            alt="Hero image"
-            width="1000"
-            height="1000"
-          />
-        </motion.div>
-      </ContentContainer>
+        </ContentContainer>
+      </div>
 
       {/* Capabilities section */}
       <div className="bg-background-dark text-white py-10 lg:py-16">
@@ -299,7 +307,7 @@ export default function Home() {
                     },
                   }}
                   key={title}
-                  className="p-4 rounded-md bg-[#121212] transition duration-300 hover:bg-primary cursor-default w-full lg:w-[294px]"
+                  className="p-4 rounded-md bg-[#121212] transition duration-300 hover:bg-primary cursor-default w-full lg:w-[294px] shadow-sm"
                 >
                   <h4 className="font-semibold mb-1 flex gap-2 items-center">
                     {icon} {title}
@@ -346,13 +354,13 @@ export default function Home() {
       <div className="text-white">
         <Image
           src="/images/triangle-transition.png"
-          alt="Triangle transition background"
+          alt="Triangle top transition background"
           className="w-full h-5 md:h-7 lg:h-9"
           height={1000}
           width={1000}
         />
         <div className="bg-primary w-full py-10 lg:py-16">
-          <ContentContainer>
+          <ContentContainer className="flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -371,7 +379,7 @@ export default function Home() {
                 every time.
               </p>
             </motion.div>
-            <div className="flex flex-col lg:flex-row gap-6">
+            <div className="flex flex-col lg:flex-row gap-6 mb-8">
               {chooseUsReasons.map(({ title, description, icon }, index) => (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -398,9 +406,32 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay + 0.5,
+                type: "spring",
+              }}
+            >
+              <PrimaryButton color="white">Get started with us</PrimaryButton>
+            </motion.div>
           </ContentContainer>
         </div>
+        <Image
+          src="/images/triangle-transition-bottom.png"
+          alt="Triangle bottom transition background"
+          className="w-full h-5 md:h-7 lg:h-9"
+          height={1000}
+          width={1000}
+        />
       </div>
+
+      {/* Get in touch section */}
+      <div></div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 export interface AccordionItem {
   title: string;
-  content: string;
+  content: string | null;
 }
 
 interface Props {
@@ -25,6 +25,7 @@ export default function Accordion({ items, delay, className }: Props) {
   return (
     <div className={clsx("flex flex-col gap-4 w-full", className)}>
       {items.map((item, index) => {
+        const contentExists = item.content !== null;
         const isOpen = openIndex === index;
 
         return (
@@ -36,19 +37,25 @@ export default function Accordion({ items, delay, className }: Props) {
               type: "spring",
               delay: delay + index * 0.4,
             }}
+            viewport={{ once: true }}
             key={index}
-            className="p-4 rounded-md bg-white hover:scale-[1.02] transition-transform cursor-pointer"
-            onClick={() => toggleAccordion(index)}
+            className={clsx(
+              "p-4 rounded-md bg-white hover:scale-[1.02] transition-transform shadow-sm",
+              contentExists ? "cursor-pointer" : "cursor-default"
+            )}
+            onClick={() => contentExists && toggleAccordion(index)}
           >
-            <div className="flex justify-between w-full mb-1 items-center">
+            <div className="flex justify-between w-full mb-1 items-center gap-4">
               <h3 className="font-semibold">{item.title}</h3>
-              <div>
-                {isOpen ? (
-                  <MinusIcon className="size-5" />
-                ) : (
-                  <PlusIcon className="size-5" />
-                )}
-              </div>
+              {contentExists && (
+                <div>
+                  {isOpen && item.content !== null ? (
+                    <MinusIcon className="size-5" />
+                  ) : (
+                    <PlusIcon className="size-5" />
+                  )}
+                </div>
+              )}
             </div>
 
             <motion.div
