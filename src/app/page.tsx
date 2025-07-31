@@ -354,7 +354,7 @@ export default function Home() {
       {/* Why choose us section */}
       <div className="text-white">
         <Image
-          src="/images/triangle-transition.png"
+          src="/images/triangle-transition-top.png"
           alt="Triangle top transition background"
           className="w-full h-5 md:h-7 lg:h-9"
           height={1000}
