@@ -36,7 +36,7 @@ export default function Header() {
     // need to re-specify max-width because fixed.
     <header
       className={clsx(
-        `fixed top-5 left-0 right-0 mx-auto z-10 w-full`,
+        `fixed top-5 left-0 right-0 mx-auto z-20 w-full`,
         contentWidth,
         layoutPadding,
         isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"

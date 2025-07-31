@@ -7,6 +7,7 @@
   --background-light: #fbfbfb;
   --background-dark: #1d1d1d;
   --background-dark-secondary: #2f2f2f;
+  --slate: #eff7ff;
 }
 
 @theme {
@@ -16,6 +17,7 @@
   --color-background-light: var(--background-light);
   --color-background-dark: var(--background-dark);
   --color-background-dark-secondary: var(--background-dark-secondary);
+  --color-slate: var(--slate);
 }
 
 .capabilities-scroll::-webkit-scrollbar {

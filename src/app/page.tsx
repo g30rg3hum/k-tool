@@ -177,9 +177,9 @@ export default function Home() {
   return (
     <div>
       {/* Hero section */}
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <ContentContainer className="pt-29 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center pb-10 lg:pb-16">
-          <div className="lg:w-[60%]">
+          <div className="lg:w-[60%] mb-10 lg:mb-auto">
             <motion.div
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -227,33 +227,59 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, x: 15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              delay:
-                precedingAnimationDelay +
-                0.25 +
-                (heroPoints.length - 1) * 0.4 +
-                0.25,
-              type: "spring",
-            }}
-            className="w-full max-w-lg lg:max-w-sm self-center lg:w-[40%]"
-          >
-            <Image
-              src="/images/hero-image.png"
-              alt="Hero image"
-              width="1000"
-              height="1000"
-            />
-          </motion.div>
+
+          {/* Image section with blob */}
+          <div className="w-full max-w-lg lg:max-w-sm self-center lg:w-[40%] relative">
+            {/* Blob */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1.2,
+                delay: precedingAnimationDelay + 0.125,
+                type: "spring",
+              }}
+              className="absolute inset-0 -z-10"
+            >
+              <Image
+                src="/images/blobs/slate-blob-1.svg"
+                alt="White blob"
+                height="1000"
+                width="1000"
+                className="w-full h-full scale-[1.75]"
+              />
+            </motion.div>
+
+            {/* Hero image */}
+            <motion.div
+              initial={{ opacity: 0, x: 15 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay:
+                  precedingAnimationDelay +
+                  0.25 +
+                  (heroPoints.length - 1) * 0.4 +
+                  0.25,
+                type: "spring",
+              }}
+              className="relative z-10"
+            >
+              <Image
+                src="/images/hero-image.png"
+                alt="Hero image"
+                width="1000"
+                height="1000"
+              />
+            </motion.div>
+          </div>
         </ContentContainer>
       </div>
 
       {/* Capabilities section */}
-      <div className="bg-background-dark text-white py-10 lg:py-16">
+      <div className="bg-[url('/images/backgrounds/black-wave-1.png')] bg-cover bg-center text-white py-10 lg:py-16">
         <ContentContainer>
           <motion.div
             initial={{ opacity: 0 }}
@@ -322,8 +348,9 @@ export default function Home() {
       </div>
 
       {/* Product highlights section */}
-      <div className="py-10 lg:py-16">
+      <div className="py-10 lg:py-16 relative">
         <ContentContainer className="flex flex-col lg:flex-row gap-6 items-center">
+          {/* Text section */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -343,24 +370,38 @@ export default function Home() {
             </p>
             <PrimaryButton>More of our work</PrimaryButton>
           </motion.div>
-          <Accordion
-            className="lg:w-[45%]"
-            items={productHighlights}
-            delay={precedingAnimationDelay + 0.25}
-          />
+
+          {/* Accordion + back svg section */}
+          <div className="lg:w-[45%] relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1.2,
+                delay: precedingAnimationDelay,
+                type: "spring",
+              }}
+              className="absolute inset-0 -z-10"
+            >
+              <div className="w-full h-full bg-slate rounded-md scale-[1] translate-6" />
+            </motion.div>
+            <Accordion
+              className="z-10"
+              items={productHighlights}
+              delay={precedingAnimationDelay + 0.25}
+            />
+          </div>
         </ContentContainer>
       </div>
 
       {/* Why choose us section */}
       <div className="text-white">
-        <Image
-          src="/images/triangle-transition-top.png"
-          alt="Triangle top transition background"
-          className="w-full h-5 md:h-7 lg:h-9"
-          height={1000}
-          width={1000}
+        <div
+          className="w-full h-5 md:h-7 lg:h-9 bg-primary"
+          style={{ clipPath: "polygon(100% 0, 100% 100%,  0 100%)" }}
         />
-        <div className="bg-primary w-full py-10 lg:py-16">
+        <div className="bg-primary w-full py-10 lg:py-16 -my-px">
           <ContentContainer className="flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0 }}
@@ -394,7 +435,10 @@ export default function Home() {
                   key={title}
                   className="text-center flex justify-center"
                 >
-                  <div className="cursor-default hover:scale-[1.02] transition-transform">
+                  <div className="cursor-default hover:scale-[1.02] transition-transform relative group">
+                    <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 scale-[0.8] group-hover:scale-[1] transition duration-300">
+                      <div className="h-full w-full bg-[#0040B0] rounded-md scale-y-[1.3] scale-x-[1.035] md:scale-x-[1.15] md:scale-y-[1.5] lg:scale-y-[1.3] lg:scale-x-[1.075]" />
+                    </div>
                     <h4 className="font-semibold mb-1 flex gap-2 items-center justify-center">
                       {icon} {title}
                     </h4>
@@ -402,7 +446,7 @@ export default function Home() {
                   </div>
 
                   {index < chooseUsReasons.length - 1 && (
-                    <div className="hidden lg:block w-px h-full bg-white ml-6"></div>
+                    <div className="hidden lg:block w-px h-full bg-white ml-6 z-10"></div>
                   )}
                 </motion.div>
               ))}
@@ -422,12 +466,9 @@ export default function Home() {
             </motion.div>
           </ContentContainer>
         </div>
-        <Image
-          src="/images/triangle-transition-bottom.png"
-          alt="Triangle bottom transition background"
-          className="w-full h-5 md:h-7 lg:h-9"
-          height={1000}
-          width={1000}
+        <div
+          className="w-full h-5 md:h-7 lg:h-9 bg-primary"
+          style={{ clipPath: "polygon(0 0, 100% 0,  0 100%)" }}
         />
       </div>
 
