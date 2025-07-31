@@ -1,6 +1,9 @@
 import ContentContainer from "@/components/layout/content-container";
 import Accordion, { AccordionItem } from "@/components/standard/accordion";
 import Card from "@/components/standard/card";
+import Input from "@/components/standard/form/input";
+import Label from "@/components/standard/form/label";
+import TextArea from "@/components/standard/form/text-area";
 import Hyperlink from "@/components/standard/hyperlink";
 import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
@@ -349,7 +352,7 @@ export default function Home() {
 
       {/* Product highlights section */}
       <div className="py-10 lg:py-16 relative">
-        <ContentContainer className="flex flex-col lg:flex-row gap-6 items-center">
+        <ContentContainer className="flex flex-col lg:flex-row gap-10 lg:gap-6 items-center">
           {/* Text section */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -372,7 +375,7 @@ export default function Home() {
           </motion.div>
 
           {/* Accordion + back svg section */}
-          <div className="lg:w-[45%] relative">
+          <div className="lg:w-[45%] relative w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -384,7 +387,7 @@ export default function Home() {
               }}
               className="absolute inset-0 -z-10"
             >
-              <div className="w-full h-full bg-slate rounded-md scale-[1] translate-6" />
+              <div className="w-full h-full bg-slate rounded-md translate-6" />
             </motion.div>
             <Accordion
               className="z-10"
@@ -473,17 +476,70 @@ export default function Home() {
       </div>
 
       {/* Get in touch section */}
-      <div className="py-10">
+      <div className="py-14">
         <ContentContainer>
-          <Card className="p-8">
-            <div>
-              <SectionHeading spaceBelow>Get in touch</SectionHeading>
-              <p>
-                Ready to take your project and tools to the next level? Let us
-                know how we can help.
-              </p>
-            </div>
-          </Card>
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay,
+                type: "spring",
+              }}
+              className="absolute inset-0 -z-10"
+            >
+              <div className="w-full h-full bg-slate rounded-md -translate-x-6 translate-y-6" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: precedingAnimationDelay + 0.5,
+                type: "spring",
+              }}
+              className="relative z-10"
+            >
+              <Card className="p-7">
+                <div className="mb-5">
+                  <SectionHeading spaceBelow>Get in touch</SectionHeading>
+                  <p>
+                    Ready to take your project and tools to the next level? Let
+                    us know how we can help.
+                  </p>
+                </div>
+                <div className="space-y-4 mb-4">
+                  <div className="flex gap-4">
+                    <div className="w-full">
+                      <Label>First name</Label>
+                      <Input />
+                    </div>
+                    <div className="w-full">
+                      <Label>Last name</Label>
+                      <Input />
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <Label>Email address</Label>
+                    <Input />
+                  </div>
+                  <div className="w-full">
+                    <Label>Enquiry subject</Label>
+                    <Input />
+                  </div>
+                  <div className="w-full">
+                    <Label>Message</Label>
+                    <TextArea />
+                  </div>
+                </div>
+                <PrimaryButton className="text-sm">Submit</PrimaryButton>
+              </Card>
+            </motion.div>
+          </div>
         </ContentContainer>
       </div>
     </div>
