@@ -1,9 +1,7 @@
 import ContentContainer from "@/components/layout/content-container";
 import Accordion, { AccordionItem } from "@/components/standard/accordion";
 import Card from "@/components/standard/card";
-import Input from "@/components/standard/form/input";
-import Label from "@/components/standard/form/label";
-import TextArea from "@/components/standard/form/text-area";
+
 import Hyperlink from "@/components/standard/hyperlink";
 import PrimaryButton from "@/components/standard/primary-button";
 import SectionHeading from "@/components/standard/section-heading";
@@ -26,6 +24,7 @@ import {
 import clsx from "clsx";
 import * as motion from "motion/react-client";
 import Image from "next/image";
+import EnquiryForm from "@/components/contact/enquiry-form";
 
 // Hero section
 const heroPointIconClassName =
@@ -512,31 +511,7 @@ export default function Home() {
                     us know how we can help.
                   </p>
                 </div>
-                <div className="space-y-4 mb-4">
-                  <div className="flex gap-4">
-                    <div className="w-full">
-                      <Label>First name</Label>
-                      <Input />
-                    </div>
-                    <div className="w-full">
-                      <Label>Last name</Label>
-                      <Input />
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <Label>Email address</Label>
-                    <Input />
-                  </div>
-                  <div className="w-full">
-                    <Label>Enquiry subject</Label>
-                    <Input />
-                  </div>
-                  <div className="w-full">
-                    <Label>Message</Label>
-                    <TextArea />
-                  </div>
-                </div>
-                <PrimaryButton className="text-sm">Submit</PrimaryButton>
+                <EnquiryForm />
               </Card>
             </motion.div>
           </div>

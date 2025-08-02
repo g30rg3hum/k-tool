@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
+import { Toaster } from "react-hot-toast";
 
 const DMSans = DM_Sans({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${DMSans.className} antialiased bg-background-light`}>
         <Header />
         {children}
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );
