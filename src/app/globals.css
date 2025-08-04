@@ -20,9 +20,17 @@
   --color-slate: var(--slate);
 }
 
+/* Only works with firefox. */
+@-moz-document url-prefix() {
+  .capabilities-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--background-dark-secondary);
+  }
+}
+
 .capabilities-scroll::-webkit-scrollbar {
-  height: 8px;
   width: 8px;
+  height: 8px;
 }
 
 .capabilities-scroll::-webkit-scrollbar-track {
@@ -37,8 +45,13 @@
 
 .capabilities-scroll::-webkit-scrollbar-thumb:hover {
   background: var(--primary-light);
+  cursor: grab;
 }
 
 .capabilities-scroll::-webkit-scrollbar-corner {
   background: var(--background-dark-secondary);
+}
+
+.capabilities-scroll::-webkit-scrollbar-button {
+  display: none; /* Hide the scrollbar buttons */
 }
