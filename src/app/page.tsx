@@ -468,10 +468,37 @@ export default function Home() {
             </motion.div>
           </ContentContainer>
         </div>
-        <div
-          className="w-full h-5 md:h-7 lg:h-9 bg-primary"
-          style={{ clipPath: "polygon(0 0, 100% 0,  0 100%)" }}
-        />
+        <div className="relative w-full h-5 md:h-7 lg:h-9">
+          <div
+            className="absolute inset-0 bg-primary"
+            style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
+          />
+          <div
+            className="absolute inset-0 bg-background-dark"
+            style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
+          />
+        </div>
+      </div>
+
+      {/* Map section */}
+      <div className="py-10 lg:py-16 bg-background-dark text-white -mt-px">
+        <ContentContainer className="flex flex-col items-center justify-center gap-6 lg:gap-8">
+          <div className="text-center">
+            <SectionHeading spaceBelow>Trusted worldwide</SectionHeading>
+            <p className="max-w-2xl mx-auto">
+              We are proud to serve clients across the globe, delivering
+              exceptional quality and service in several countries.
+            </p>
+          </div>
+          <div>
+            <Image
+              src="/images/countries.png"
+              width="650"
+              height="650"
+              alt="World map with countries that we've provided for"
+            />
+          </div>
+        </ContentContainer>
       </div>
 
       {/* Get in touch section */}
