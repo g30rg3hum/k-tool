@@ -54,7 +54,7 @@ export default function Header() {
       >
         <Link href="/">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-black.png"
             alt="K-Tool Logo"
             width={120}
             height={50}

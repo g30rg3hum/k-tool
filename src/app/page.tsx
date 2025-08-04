@@ -140,7 +140,7 @@ const productHighlights: AccordionItem[] = [
   {
     title: "High-Performance Components for Semiconductor Manufacturing",
     content:
-      "We manufacture T&F die sets, punches and die inserts designed ot meet the high standards and reliability required in semiconductor manufacturing.",
+      "We manufacture T&F die sets, punches and die inserts designed to meet the high standards and reliability required in semiconductor manufacturing.",
   },
   {
     title: "High-Precision Mold Inserts for Connector and Housing Production",
