@@ -25,6 +25,13 @@ import clsx from "clsx";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import EnquiryForm from "@/components/contact/enquiry-form";
+import {
+  WrenchIcon,
+  StarIcon,
+  CheckBadgeIcon,
+  GlobeAltIcon,
+} from "@heroicons/react/16/solid";
+import SmoothScrollSection from "@/components/lenis/smooth-scroll-section";
 
 // Hero section
 const heroPointIconClassName =
@@ -53,7 +60,7 @@ const heroPoints = [
 ];
 
 // Capabilities section
-const capabilitiesIconClassName = "size-6";
+const capabilitiesIconClassName = "size-5";
 const capabilities = [
   {
     title: "Profile Grinding",
@@ -80,9 +87,9 @@ const capabilities = [
     title: "Design & Reverse Engineering",
     description: (
       <>
-        We create high-precision die sets, and replicate or modify existing
-        tools or parts, guided by specialised expertise in advanced tooling for
-        the electronics industry.
+        Create high-precision die sets, and replicate/modify existing tools or
+        parts, with specialised expertise in advanced tooling for the
+        electronics industry.
       </>
     ),
     icon: <PuzzlePieceIcon className={capabilitiesIconClassName} />,
@@ -103,7 +110,7 @@ const capabilities = [
     description: (
       <>
         High-precision spark erosion for detailed cavities, fine details, and
-        hardened materials—perfect for advanced tooling and mold applications.
+        hardened materials for advanced tooling and mold applications.
       </>
     ),
     icon: <BoltIcon className={capabilitiesIconClassName} />,
@@ -140,7 +147,7 @@ const productHighlights: AccordionItem[] = [
   {
     title: "High-Performance Components for Semiconductor Manufacturing",
     content:
-      "We manufacture T&F die sets, punches and die inserts designed to meet the high standards and reliability required in semiconductor manufacturing.",
+      "We manufacture T&F die sets, punches, and die inserts designed to meet the high standards and reliability required in semiconductor manufacturing.",
   },
   {
     title: "High-Precision Mold Inserts for Connector and Housing Production",
@@ -178,9 +185,10 @@ const chooseUsReasons = [
 export default function Home() {
   return (
     <div>
+      <SmoothScrollSection />
       {/* Hero section */}
       <div className="relative overflow-hidden">
-        <ContentContainer className="pt-29 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center pb-10 lg:pb-16">
+        <ContentContainer className="pt-30 lg:pt-36 flex flex-col items-left gap-6 lg:flex-row lg:items-center pb-14 lg:pb-16">
           <div className="lg:w-[60%] mb-10 lg:mb-auto">
             <motion.div
               initial={{ opacity: 0, x: -15 }}
@@ -192,7 +200,7 @@ export default function Home() {
                 type: "spring",
               }}
             >
-              <h2 className="font-bold text-3xl mb-1 md:text-4xl">
+              <h2 className="font-black text-3xl mb-1 md:text-4xl">
                 Setting the standard in{" "}
                 <span className="text-primary">precision engineering</span>
               </h2>
@@ -218,7 +226,7 @@ export default function Home() {
                     type: "spring",
                   }}
                   key={index}
-                  className="flex items-center w-full gap-2"
+                  className="flex items-center gap-2 w-full lg:w-[156px] font-semibold"
                 >
                   {icon}
                   <p>{text}</p>
@@ -249,7 +257,7 @@ export default function Home() {
                 alt="White blob"
                 height="1000"
                 width="1000"
-                className="w-full h-full scale-[1.75]"
+                className="w-full h-full scale-[1.65] -translate-x-4"
               />
             </motion.div>
 
@@ -281,7 +289,7 @@ export default function Home() {
       </div>
 
       {/* Capabilities section */}
-      <div className="bg-[url('/images/backgrounds/black-wave-1.png')] bg-cover bg-center text-white py-10 lg:py-16">
+      <div className="bg-[url('/images/backgrounds/black-gradient-1.png')] bg-cover bg-center text-white py-12 lg:py-16">
         <ContentContainer>
           <motion.div
             initial={{ opacity: 0 }}
@@ -294,15 +302,19 @@ export default function Home() {
             }}
             className="mb-6"
           >
-            <SectionHeading spaceBelow>Our capabilities</SectionHeading>
+            <SectionHeading spaceBelow>
+              Our capabilities <WrenchIcon className="size-6 inline-block" />
+            </SectionHeading>
             <p>
               A one-stop tooling solution that specialises in turning complex
-              engineering challenges into perfectly executed parts and tool.
+              engineering challenges into perfectly executed parts and tools.
               With full in-house capabilities, K-Tool delivers accuracy,
               repeatability, and reliability at every stage of production.
               Whether it&apos;s a one-off prototype or intricate molds, we
               engineer with purpose -{" "}
-              <span className="italic">and precision.</span>
+              <span className="text-primary-light font-semibold">
+                and precision.
+              </span>
             </p>
           </motion.div>
 
@@ -338,7 +350,7 @@ export default function Home() {
                   key={title}
                   className="p-4 rounded-md bg-[#121212] border border-[#080808] transition duration-300 hover:bg-primary hover:border-primary-dark cursor-default w-full lg:w-[294px] shadow-sm"
                 >
-                  <h4 className="font-semibold mb-1 flex gap-2 items-center">
+                  <h4 className="font-bold mb-1 flex gap-2 items-center text-md">
                     {icon} {title}
                   </h4>
                   <p className="text-sm">{description}</p>
@@ -350,8 +362,8 @@ export default function Home() {
       </div>
 
       {/* Product highlights section */}
-      <div className="py-10 lg:py-16 relative">
-        <ContentContainer className="flex flex-col lg:flex-row gap-10 lg:gap-6 items-center">
+      <div className="py-12 lg:py-16 relative">
+        <ContentContainer className="flex flex-col lg:flex-row gap-10 items-center">
           {/* Text section */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -364,13 +376,37 @@ export default function Home() {
             }}
             className="lg:w-[55%]"
           >
-            <SectionHeading spaceBelow>Product highlights</SectionHeading>
+            <SectionHeading spaceBelow>
+              Product highlights <StarIcon className="size-6 inline-block" />
+            </SectionHeading>
             <p className="mb-4">
               Our precision engineering capabilities power real-world solutions
               across a wide range of applications - helping you stay ahead in a
               rapidly evolving technological world.
             </p>
-            <PrimaryButton>More of our work</PrimaryButton>
+            <PrimaryButton className="mb-5">More of our work</PrimaryButton>
+            <div className="relative w-full">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.2,
+                  delay: precedingAnimationDelay,
+                  type: "spring",
+                }}
+                className="absolute inset-0 -z-10"
+              >
+                <div className="w-full h-full bg-slate rounded-md -translate-x-6 translate-y-6" />
+              </motion.div>
+              <Image
+                src="/images/stock-image.jpg"
+                alt="Stock image"
+                width="1000"
+                height="1000"
+                className="rounded-md shadow-sm border border-gray-200"
+              />
+            </div>
           </motion.div>
 
           {/* Accordion + back svg section */}
@@ -403,7 +439,7 @@ export default function Home() {
           className="w-full h-5 md:h-7 lg:h-9 bg-primary"
           style={{ clipPath: "polygon(100% 0, 100% 100%,  0 100%)" }}
         />
-        <div className="bg-primary w-full py-10 lg:py-16 -my-px">
+        <div className="bg-primary w-full py-12 lg:py-16 -my-px">
           <ContentContainer className="flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0 }}
@@ -416,11 +452,14 @@ export default function Home() {
               }}
               className="text-center flex flex-col items-center mb-8"
             >
-              <SectionHeading spaceBelow>Why choose us?</SectionHeading>
+              <SectionHeading spaceBelow>
+                Why choose us?{" "}
+                <CheckBadgeIcon className="size-6 inline-block" />
+              </SectionHeading>
               <p className="max-w-2xl">
                 Trusted by leading manufacturers, we combine craftsmanship,
-                technology, and commitment to deliver unmatched precision -
-                every time.
+                technology, and commitment to deliver unmatched precision -{" "}
+                <span className="underline">every time</span>.
               </p>
             </motion.div>
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 mb-8">
@@ -441,7 +480,7 @@ export default function Home() {
                     <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 scale-[0.8] group-hover:scale-[1] transition duration-300">
                       <div className="h-full w-full bg-[#0040B0] rounded-md scale-y-[1.3] scale-x-[1.035] md:scale-x-[1.15] md:scale-y-[1.5] lg:scale-y-[1.3] lg:scale-x-[1.075]" />
                     </div>
-                    <h4 className="font-semibold mb-1 flex gap-2 items-center justify-center">
+                    <h4 className="font-bold mb-1 flex gap-2 items-center justify-center">
                       {icon} {title}
                     </h4>
                     <p className="text-sm">{description}</p>
@@ -481,28 +520,50 @@ export default function Home() {
       </div>
 
       {/* Map section */}
-      <div className="py-10 lg:py-16 bg-background-dark text-white -mt-px">
+      <div className="py-12 lg:py-16 bg-background-dark text-white -mt-px">
         <ContentContainer className="flex flex-col items-center justify-center gap-6 lg:gap-8">
-          <div className="text-center">
-            <SectionHeading spaceBelow>Trusted worldwide</SectionHeading>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.8,
+              delay: precedingAnimationDelay,
+              type: "spring",
+            }}
+            className="text-center"
+          >
+            <SectionHeading spaceBelow>
+              Trusted worldwide <GlobeAltIcon className="size-6 inline-block" />
+            </SectionHeading>
             <p className="max-w-2xl mx-auto">
               We are proud to serve clients across the globe, delivering
-              exceptional quality and service in several countries.
+              exceptional quality and service in several countries in various
+              continents.
             </p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.8,
+              delay: precedingAnimationDelay + 0.25,
+              type: "spring",
+            }}
+          >
             <Image
-              src="/images/countries.png"
-              width="650"
-              height="650"
+              src="/images/countries.svg"
+              width="750"
+              height="0"
               alt="World map with countries that we've provided for"
             />
-          </div>
+          </motion.div>
         </ContentContainer>
       </div>
 
       {/* Get in touch section */}
-      <div className="py-14">
+      <div className="py-12 lg:py-16">
         <ContentContainer>
           <div className="relative">
             <motion.div

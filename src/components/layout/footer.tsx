@@ -43,13 +43,13 @@ export default function Footer() {
           </li>
         </ul>
         <ul>
-          <li className="font-bold">Navigation</li>
+          <li className="font-bold text-primary-light">Navigation</li>
           {navLinks.map(({ href, text }) => (
             <li key={href}>{text}</li>
           ))}
         </ul>
         <ul>
-          <li className="font-bold">Legal & Compliance</li>
+          <li className="font-bold text-primary-light">Legal & Compliance</li>
           <li>Privacy policy</li>
           <li>Terms of service</li>
           <li>Cookie policy</li>
@@ -57,12 +57,12 @@ export default function Footer() {
           <li>Legal disclaimers</li>
         </ul>
         <ul>
-          <li className="font-bold">Business information</li>
+          <li className="font-bold text-primary-light">Business information</li>
           <li>Company registration</li>
           <li>Professional certifications</li>
         </ul>
         <ul className="space-y-2">
-          <li className="font-bold">Socials</li>
+          <li className="font-bold text-primary-light">Socials</li>
           <li>
             <SocialIcon
               url="https://www.facebook.com"

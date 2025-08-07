@@ -46,7 +46,7 @@ export default function Accordion({ items, delay, className }: Props) {
             onClick={() => contentExists && toggleAccordion(index)}
           >
             <div className="flex justify-between w-full mb-1 items-center gap-4">
-              <h3 className="font-semibold">{item.title}</h3>
+              <h3 className="font-bold">{item.title}</h3>
               {contentExists && (
                 <div>
                   {isOpen && item.content !== null ? (

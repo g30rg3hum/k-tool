@@ -64,7 +64,7 @@ export default function Header() {
 
         {/* Desktop full navigation */}
         <nav className={`hidden lg:block`}>
-          <ul className="flex gap-6 font-semibold items-center">
+          <ul className="flex gap-6 font-bold items-center">
             {navLinks.map(({ text, href }) => {
               if (text !== "Contact") {
                 return <NavLink key={text} href={href} text={text} />;
@@ -102,7 +102,7 @@ export default function Header() {
           )}
         >
           <nav>
-            <ul className="font-semibold space-y-3">
+            <ul className="font-bold space-y-3">
               {navLinks.map(({ text, href }) => (
                 <NavLink
                   key={text}
