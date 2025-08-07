@@ -20,8 +20,10 @@ export default function SmoothScrollSection() {
     setLenis(scroller);
 
     return () => {
-      cancelAnimationFrame(rafState);
-      lenisRef.destroy();
+      if (lenisRef && rafState) {
+        cancelAnimationFrame(rafState);
+        lenisRef.destroy();
+      }
     };
   }, []);
 

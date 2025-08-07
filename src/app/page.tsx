@@ -30,6 +30,7 @@ import {
   StarIcon,
   CheckBadgeIcon,
   GlobeAltIcon,
+  ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/16/solid";
 import SmoothScrollSection from "@/components/lenis/smooth-scroll-section";
 
@@ -593,7 +594,10 @@ export default function Home() {
             >
               <Card className="p-7">
                 <div className="mb-5">
-                  <SectionHeading spaceBelow>Get in touch</SectionHeading>
+                  <SectionHeading spaceBelow>
+                    Get in touch{" "}
+                    <ChatBubbleLeftEllipsisIcon className="size-6 inline-block" />
+                  </SectionHeading>
                   <p>
                     Ready to take your project and tools to the next level? Let
                     us know how we can help.

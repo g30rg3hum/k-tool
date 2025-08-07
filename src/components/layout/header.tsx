@@ -128,9 +128,9 @@ interface NavLinkProps {
 function NavLink({ href, text, onClick }: NavLinkProps) {
   return (
     <li className="hover:scale-[1.02] transition-all w-max">
-      <Link href={href} onClick={onClick}>
+      <a href={href} onClick={onClick}>
         {text}
-      </Link>
+      </a>
     </li>
   );
 }
