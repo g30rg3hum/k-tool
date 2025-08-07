@@ -124,7 +124,7 @@ export default function About() {
         </ContentContainer>
       </div>
       {/* Origin */}`
-      <div className="pb-10">
+      <div className="pb-16">
         <ContentContainer className="flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0 }}
